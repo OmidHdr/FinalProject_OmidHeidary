@@ -1,10 +1,15 @@
 package org.example.panels;
 
 import org.example.Main;
+import org.example.entity.Customer;
+import org.example.entity.Role;
 import org.example.entity.User;
+import org.example.repository.UserService;
 import org.example.services.AdminService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.time.LocalDate;
 
 
 public class StartPanel {
@@ -36,7 +41,7 @@ public class StartPanel {
                 AdminService adminService = new AdminService();
                 final boolean login = adminService.login(user);
                 if (login) {
-                    System.out.println("User Logged in successfully ");
+                    System.out.println("User "+user.getUsername()+" Logged in successfully ");
                     logger.info("User Logged in successfully");
                 } else {
                     System.out.println("wrong username or password ");
@@ -46,13 +51,37 @@ public class StartPanel {
                 }
                 break;
             case "2":
+                register();
                 break;
         }
     }
 
     //section register
-    public static void register() {
-        
+    public static void register() throws Exception {
+//        /*
+        System.out.print("Enter your First Name : ");
+        String firstName = Main.scanner.nextLine();
+        System.out.print("Enter your Last Name : ");
+        String lastName = Main.scanner.nextLine();
+        System.out.print("Enter your Email Address : ");
+        String email = Main.scanner.nextLine();
+        LocalDate date = LocalDate.now();
+        System.out.print("Enter Your Password : ");
+        String password = Main.scanner.nextLine();
+        System.out.print("Enter your role(customer / expert ) : ");
+        String role = Main.scanner.nextLine();
+
+        // initialize customer
+        boolean status = false;
+        if (role.equals("customer")){
+            status = true;
+        }
+        User user = new User(firstName,lastName,email,date,password,Role.getFromString(role),status,0L);
+        UserService userService = new UserService();
+        userService.create(user);
+        logger.info("User "+user.getUsername()+" created successfully");
+        panel();
+        select();
     }
 
 }
