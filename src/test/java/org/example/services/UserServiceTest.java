@@ -1,16 +1,16 @@
 package org.example.services;
 
-import org.example.entity.Admin;
+import org.example.entity.User;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class AdminServiceTest {
+class UserServiceTest {
 
     @Test
     void login() throws Exception {
-        Admin admin = new Admin("root","root");
+        User user = new User("root","root");
         AdminService adminService = new AdminService();
-        assertTrue(AdminService.login(admin));
+        assertTrue(AdminService.login(user));
     }
 }

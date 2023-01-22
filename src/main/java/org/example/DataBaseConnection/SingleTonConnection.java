@@ -1,7 +1,7 @@
 package org.example.DataBaseConnection;
 
 import lombok.NoArgsConstructor;
-import org.example.entity.Admin;
+import org.example.entity.User;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -17,7 +17,7 @@ public class SingleTonConnection {
                     .build();
 
             INSTANCE = new MetadataSources(registry)
-                    .addAnnotatedClass(Admin.class)
+                    .addAnnotatedClass(User.class)
                     .buildMetadata()
                     .buildSessionFactory();
         }
