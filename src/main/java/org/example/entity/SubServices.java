@@ -8,11 +8,10 @@ import java.util.Collection;
 
 @Setter
 @Getter
-@AllArgsConstructor
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Entity
-@Table(name = "services")
+@Table(name = "sub_services")
 public class SubServices {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,9 +19,11 @@ public class SubServices {
 
     String name;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    Collection<Services> services;
+    @ManyToOne(cascade = CascadeType.ALL)
+    Services services;
 
-
-
+    public SubServices(String name, Services services) {
+        this.name = name;
+        this.services = services;
+    }
 }
