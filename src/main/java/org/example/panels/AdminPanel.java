@@ -3,8 +3,13 @@ package org.example.panels;
 import org.example.Main;
 import org.example.entity.Services;
 import org.example.repository.ServicesRepository;
+import org.example.services.ServicesService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.List;
+
+import static java.lang.System.out;
 
 public class AdminPanel {
 
@@ -12,15 +17,16 @@ public class AdminPanel {
 
     //section panel
     public static void panel() {
-        System.out.println("""
+        out.println("""
                 _______________\s
                 1. Confirm Expert
                 1. Reject Expert \s
                 3. Show All Request \s
                 4. Service registration \s
                 5. Register under the service \s
-                6. Logout""");
-        System.out.print("Enter Your Number : ");
+                6. Show All Service registration \s
+                7. Logout""");
+        out.print("Enter Your Number : ");
     }
 
     //section select
@@ -36,25 +42,42 @@ public class AdminPanel {
             case "5":
                 //todo add this
 //                RegisterUnderService();
+            case "6":
+                showAllServices();
                 break;
         }
     }
 
     private static void RegisterUnderService(Services services) {
         //todo add this code
+
+
     }
 
 
     // section registration service
     public static void ServiceRegistration() throws Exception {
-        System.out.print("Enter your Service Registration name : ");
+        out.print("Enter your Service Registration name : ");
         String registrationName = Main.scanner.nextLine();
         Services services = new Services(registrationName);
-        ServicesRepository servicesRepository = new ServicesRepository();
-        servicesRepository.create(services);
-        logger.info("services {} added into database ",services);
+        ServicesService servicesService = new ServicesService(new ServicesRepository());
+        servicesService.create(services);
+        logger.info("services {} added into database ", services);
         panel();
         select();
     }
 
+    public static void showAllServices() throws Exception {
+        ServicesService servicesService = new ServicesService(new ServicesRepository());
+        List all = servicesService.findAll(Services.class);
+        if (all.size() < 1)
+            out.println("There is No Services");
+        else {
+            out.println("_________________________");
+            final List<Services> services = ServicesService.showAllServices();
+            services.forEach(services1 -> out.println(services1.getName()));
+        }
+        panel();
+        select();
+    }
 }
