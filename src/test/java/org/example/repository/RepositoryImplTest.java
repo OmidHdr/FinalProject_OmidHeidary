@@ -2,6 +2,7 @@ package org.example.repository;
 
 import org.example.entity.Role;
 import org.example.entity.User;
+import org.example.services.UserService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
 

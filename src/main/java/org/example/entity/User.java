@@ -26,12 +26,14 @@ public class User {
     String firstName;
     @Column(nullable = false,name = "last_name")
     String lastName;
-    @Column(nullable = false)
+    @Column(nullable = false,unique = true)
     String email;
     @Column(nullable = false)
     LocalDate date;
     @Column(nullable = false)
     String password;
+    @Enumerated(value = EnumType.STRING)
+    @Column(nullable = false)
     Role role;
     boolean status;
     Long inventory;

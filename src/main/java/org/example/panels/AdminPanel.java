@@ -4,11 +4,14 @@ import org.example.Main;
 
 public class AdminPanel {
     public static void panel() {
-        System.out.println("_______________ \n" +
-                "1. Add a new  \n" +
-                "2. Confirm Loan\n" +
-                "3. Reject Loan]n" +
-                "4. Logout");
+        System.out.println("""
+                _______________\s
+                1. Confirm Expert
+                1. Reject Expert \s
+                3. Show All Request \s
+                4. Service registration \s
+                5. Register under the service \s
+                6. Logout""");
         System.out.print("Enter Your Number : ");
     }
 
