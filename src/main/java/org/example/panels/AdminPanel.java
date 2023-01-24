@@ -5,16 +5,20 @@ import org.example.entity.Expert;
 import org.example.entity.Services;
 import org.example.entity.SubServices;
 import org.example.entity.User;
+import org.example.repository.ExpertRepository;
 import org.example.repository.ServicesRepository;
 import org.example.repository.SubServiceRepository;
 import org.example.repository.UserRepository;
+import org.example.services.ExpertService;
 import org.example.services.ServicesService;
 import org.example.services.SubServicesService;
 import org.example.services.UserService;
 import org.example.validation.Validation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 import java.util.List;
+
 import static java.lang.System.out;
 
 public class AdminPanel {
@@ -26,13 +30,14 @@ public class AdminPanel {
         out.println("""
                 __________________________________\s
                 1. Confirm Expert
-                1. Reject Expert \s
-                3. Show All Request \s
-                4. Service registration \s
-                5. Register under the service \s
-                6. Show All Service registration \s
-                7. Show All Sub Service registration \s
-                8. Logout""");
+                2. Delete User \s
+                3. Delete Expert \s
+                4. Show All Request \s
+                5. Service registration \s
+                6. Register under the service \s
+                7. Show All Service registration \s
+                8. Show All Sub Service registration \s
+                9. Logout""");
         out.print("Enter Your Number : ");
     }
 
@@ -45,35 +50,47 @@ public class AdminPanel {
                 select();
                 break;
             case "2":
+                deleteUser();
+                panel();
+                select();
                 break;
             case "3":
-                showAllRequestForBeanExpert();
+                deleteExpert();
                 panel();
                 select();
                 break;
             case "4":
-                ServiceRegistration();
+                showAllRequestForBeanExpert();
+                panel();
+                select();
                 break;
             case "5":
-                RegisterUnderService();
+                ServiceRegistration();
                 break;
             case "6":
+                RegisterUnderService();
+                break;
+            case "7":
                 showAllServices();
                 panel();
                 select();
                 break;
-            case "7":
+            case "8":
                 showAllSubServices();
                 panel();
                 select();
                 break;
+            case "9":
+                break;
+            default:
+
         }
     }
 
 
     private static boolean RegisterUnderService() throws Exception {
         final int size = showAllServices();
-        if (size < 1){
+        if (size < 1) {
             out.println("There is no Service Registrtion in list\n" +
                     "First Add it and come back later !!! ");
             panel();
@@ -87,7 +104,7 @@ public class AdminPanel {
         final Services byId = service.findById(Long.parseLong(number), Services.class);
         out.print("Enter your SubService : ");
         final String sub = Main.scanner.nextLine();
-        SubServices subServices = new SubServices(sub,byId);
+        SubServices subServices = new SubServices(sub, byId);
         final SubServicesService subServicesService = new SubServicesService(new SubServiceRepository());
         subServicesService.create(subServices);
         panel();
@@ -123,7 +140,7 @@ public class AdminPanel {
                 ServicesService service = new ServicesService(new ServicesRepository());
                 Long serviceId = services1.getServices().getId();
                 Services byId = service.findById(serviceId, Services.class);
-                out.print("Services : " +byId.getName()+"\t\t");
+                out.print("Services : " + byId.getName() + "\t\t");
                 out.println("Name : " + services1.getName());
             });
         }
@@ -140,7 +157,7 @@ public class AdminPanel {
         else {
             out.println("_________________________");
             all.forEach(services1 -> {
-                out.print("ID : " + services1.getId()+"\t\t");
+                out.print("ID : " + services1.getId() + "\t\t");
                 out.println("Name : " + services1.getName());
             });
         }
@@ -152,13 +169,13 @@ public class AdminPanel {
         UserService userService = new UserService(new UserRepository());
         List<Expert> inactiveUsers = userService.findInactiveUsers();
         inactiveUsers.forEach(subServices -> {
-            out.print("ID : " + subServices.getId()+"\t\t");
-            out.print("FirstName : " + subServices.getFirstName()+"\t\t");
-            out.print("LastName : " + subServices.getLastName()+"\t\t");
-            out.print("Email : " + subServices.getEmail()+"\t\t");
-            out.print("Role : " + subServices.getRole()+"\t\t");
-            out.print("Services : " + subServices.getServices().getName()+"\t\t");
-            out.print("Sub Services : " + subServices.getSubServices().getName()+"\t\t");
+            out.print("ID : " + subServices.getId() + "\t\t");
+            out.print("FirstName : " + subServices.getFirstName() + "\t\t");
+            out.print("LastName : " + subServices.getLastName() + "\t\t");
+            out.print("Email : " + subServices.getEmail() + "\t\t");
+            out.print("Role : " + subServices.getRole() + "\t\t");
+            out.print("Services : " + subServices.getServices().getName() + "\t\t");
+            out.print("Sub Services : " + subServices.getSubServices().getName() + "\t\t");
         });
         return inactiveUsers.size();
     }
@@ -166,8 +183,7 @@ public class AdminPanel {
     //section confirm Expert
     public static void confirmExpert() throws Exception {
         int size = showAllRequestForBeanExpert();
-        out.println();
-        out.print("Enter your Expert To active : ");
+        out.print("\nEnter your Expert To active : ");
         String item = Main.scanner.nextLine();
         String valid = Validation.betweenShow(item, size);
         UserService userService = new UserService(new UserRepository());
@@ -176,6 +192,42 @@ public class AdminPanel {
         userService.update(byId);
     }
 
-    
+    //section delete User
+    public static void deleteUser() throws Exception {
+        UserService userService = new UserService(new UserRepository());
+        final List<User> allUsers = userService.findAll(User.class);
+        allUsers.forEach(user -> {
+            out.print("ID : " + user.getId() + "\t\t");
+            out.print("FirstName : " + user.getFirstName() + "\t\t");
+            out.print("LastName : " + user.getLastName() + "\t\t");
+            out.print("Email : " + user.getEmail() + "\t\t");
+            out.print("Role : " + user.getRole() + "\t\t");
+        });
+        out.print("\nEnter your id to delete : ");
+        String item = Main.scanner.nextLine();
+        String valid = Validation.betweenShow(item, allUsers.size());
+        User byId = userService.findById(Long.parseLong(valid), User.class);
+        userService.delete(byId);
+    }
+
+    // section delete Expert
+    public static void deleteExpert(){
+        ExpertService expertService = new ExpertService(new ExpertRepository());
+        final List<Expert> allExperts = expertService.findAll(Expert.class);
+        allExperts.forEach(expert -> {
+            out.print("ID : " + expert.getId() + "\t\t");
+            out.print("FirstName : " + expert.getFirstName() + "\t\t");
+            out.print("LastName : " + expert.getLastName() + "\t\t");
+            out.print("Email : " + expert.getEmail() + "\t\t");
+            out.print("Role : " + expert.getRole() + "\t\t");
+            out.print("Services : " + expert.getServices().getName() + "\t\t");
+            out.print("Sub Services : " + expert.getSubServices().getName() + "\t\t");
+        });
+        out.print("\nEnter your id to delete : ");
+        String item = Main.scanner.nextLine();
+        String valid = Validation.betweenShow(item, allExperts.size());
+        Expert byId = expertService.findById(Long.parseLong(valid), Expert.class);
+        expertService.delete(byId);
+    }
 
 }
