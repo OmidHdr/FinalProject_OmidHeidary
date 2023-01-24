@@ -1,6 +1,7 @@
 package org.example.entity;
 
 
+import jdk.jfr.Name;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 import javax.persistence.*;
@@ -22,8 +23,15 @@ public class SubServices {
     @ManyToOne(cascade = CascadeType.ALL)
     Services services;
 
-    public SubServices(String name, Services services) {
+    String description;
+
+    @Column(name = "base_price")
+    Long basePrice;
+
+    public SubServices(String name, Services services, String description, Long basePrice) {
         this.name = name;
         this.services = services;
+        this.description = description;
+        this.basePrice = basePrice;
     }
 }

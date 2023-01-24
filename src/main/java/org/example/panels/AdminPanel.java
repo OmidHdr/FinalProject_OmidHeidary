@@ -33,8 +33,8 @@ public class AdminPanel {
                 2. Delete User \s
                 3. Delete Expert \s
                 4. Show All Request \s
-                5. Service registration \s
-                6. Register under the service \s
+                5. Add Service registration \s
+                6. Add Sub Service Registration \s
                 7. Show All Service registration \s
                 8. Show All Sub Service registration \s
                 9. Logout""");
@@ -104,7 +104,12 @@ public class AdminPanel {
         final Services byId = service.findById(Long.parseLong(number), Services.class);
         out.print("Enter your SubService : ");
         final String sub = Main.scanner.nextLine();
-        SubServices subServices = new SubServices(sub, byId);
+        out.print("Enter your discrioption : ");
+        final String discription = Main.scanner.nextLine();
+        out.print("Enter Base Price : ");
+        final String basePrice = Main.scanner.nextLine();
+        Long price = Validation.validNumber(basePrice);
+        SubServices subServices = new SubServices(sub, byId,discription,price);
         final SubServicesService subServicesService = new SubServicesService(new SubServiceRepository());
         subServicesService.create(subServices);
         panel();
