@@ -2,7 +2,14 @@ package org.example.panels;
 
 import org.example.Main;
 import org.example.Enum.Role;
+import org.example.entity.Expert;
+import org.example.entity.Services;
+import org.example.entity.SubServices;
 import org.example.entity.User;
+import org.example.repository.ServicesRepository;
+import org.example.repository.SubServiceRepository;
+import org.example.services.ServicesService;
+import org.example.services.SubServicesService;
 import org.example.services.UserService;
 import org.example.services.AdminService;
 import org.example.validation.Validation;
@@ -10,6 +17,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.time.LocalDate;
+import java.util.List;
+
+import static java.lang.System.out;
 
 
 public class StartPanel {
@@ -43,14 +53,14 @@ public class StartPanel {
                 final User user = createUser();
                 final boolean login = AdminService.login(user);
                 final boolean loginUser = UserService.login(user);
-                if(login){
+                if (login) {
                     logger.info("User " + user.getUsername() + " Logged in successfully ");
                     System.out.println("User Logged in successfully");
                     AdminPanel.panel();
                     AdminPanel.select();
-                }else if(loginUser) {
+                } else if (loginUser) {
                     System.out.println("User exist");
-                }else{
+                } else {
                     System.out.println("wrong username or password ");
                     logger.error("wrong username or password");
                     panel();
@@ -63,37 +73,77 @@ public class StartPanel {
 
     //section register
     public static void register() throws Exception {
-        System.out.print("Enter your First Name : ");
+        out.print("Enter your First Name : ");
         String firstName = Main.scanner.nextLine();
         firstName = Validation.validString(firstName);
-        System.out.print("Enter your Last Name : ");
+        out.print("Enter your Last Name : ");
         String lastName = Main.scanner.nextLine();
         lastName = Validation.validString(lastName);
-        System.out.print("Enter your Email Address : ");
+        out.print("Enter your Email Address : ");
         String email = Main.scanner.nextLine();
         email = Validation.validString(email);
         LocalDate date = LocalDate.now();
-        System.out.print("Enter Your Password : ");
+        out.print("Enter Your Password : ");
         String password = Main.scanner.nextLine();
-        System.out.println("""
+        out.println("""
                 ________________\s
                 1. customer
                 2. expert\s
                 """);
-        System.out.print("Enter your role( 1 or 2 ) : ");
+        out.print("Enter your role( 1 or 2 ) : ");
         String role = Main.scanner.nextLine();
         role = Validation.between(role);
         final String roleUser = Validation.Role(Integer.parseInt(role));
 
-        // initialize customer
-        boolean status = role.equals("customer");
-        User user = new User(firstName, lastName, email, date, password, Role.getFromString(roleUser), status, 0L);
-        UserService userService = new UserService();
-        userService.create(user);
-        logger.info("User " + user.getUsername() + " created successfully");
-        panel();
-        select();
+        if (role.equals("2")) {
+
+            Services services = selectService();
+            SubServices subServices = selectSubService(services.getId());
+            // initialize expert
+            Expert expert = new Expert(firstName, lastName, email, date, password, Role.getFromString(roleUser), false, 0L,services,subServices);
+            UserService userService = new UserService();
+            userService.create(expert);
+            logger.info("Expert {} created successfully",expert.getUsername());
+            panel();
+            select();
+        } else {
+            // initialize customer
+            User user = new User(firstName, lastName, email, date, password, Role.getFromString(roleUser), true, 0L);
+            UserService userService = new UserService();
+            userService.create(user);
+            logger.info("User " + user.getUsername() + " created successfully");
+            panel();
+            select();
+        }
     }
+
+
+    //section select Service
+    public static Services selectService() throws Exception {
+        final int i = AdminPanel.showAllServices();
+        System.out.print("Choice your Service : ");
+        String ability = Main.scanner.nextLine();
+        final String s = Validation.betweenShow(ability, i);
+        ServicesService service = new ServicesService(new ServicesRepository());
+        final Services byId = service.findById(Long.parseLong(s), Services.class);
+        return byId;
+    }
+
+    public static SubServices selectSubService(Long id) {
+        SubServicesService subServices = new SubServicesService(new SubServiceRepository());
+        List<SubServices> show = subServices.selectSubService(id);
+        out.println("_________________________");
+        show.forEach(services1 -> {
+            out.print("ID : " + services1.getId()+"\t\t");
+            out.println("Name : " + services1.getName());
+        });
+        out.print("choice your sub service : ");
+        String sub = Main.scanner.nextLine();
+        String number = Validation.betweenShow(sub, show.size());
+        final SubServices byId = subServices.findById(Long.parseLong(number), SubServices.class);
+        return byId;
+    }
+
 
 }
 

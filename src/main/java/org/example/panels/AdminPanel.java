@@ -99,7 +99,7 @@ public class AdminPanel {
     }
 
     //section show all subservices
-    private static int showAllSubServices() {
+    public static int showAllSubServices() {
         SubServicesService subservice = new SubServicesService(new SubServiceRepository());
         final List<SubServices> allService = subservice.findAll(SubServices.class);
         if (allService.size() < 1)
@@ -116,13 +116,13 @@ public class AdminPanel {
             });
         }
         return allService.size();
-
     }
+
 
     //section showall services
     public static int showAllServices() throws Exception {
         ServicesService servicesService = new ServicesService(new ServicesRepository());
-        final List<Services> all = ServicesService.showAllServices();
+        final List<Services> all = servicesService.findAll(Services.class);
         if (all.size() < 1)
             out.println("There is No Services");
         else {

@@ -1,6 +1,7 @@
 package org.example.DataBaseConnection;
 
 import lombok.NoArgsConstructor;
+import org.example.entity.Expert;
 import org.example.entity.Services;
 import org.example.entity.SubServices;
 import org.example.entity.User;
@@ -22,6 +23,7 @@ public class SingleTonConnection {
                     .addAnnotatedClass(User.class)
                     .addAnnotatedClass(Services.class)
                     .addAnnotatedClass(SubServices.class)
+                    .addAnnotatedClass(Expert.class)
                     .buildMetadata()
                     .buildSessionFactory();
         }
