@@ -1,6 +1,6 @@
 package org.example.repository;
 
-import org.example.entity.Role;
+import org.example.Enum.Role;
 import org.example.entity.User;
 import org.example.services.UserService;
 import org.junit.jupiter.api.Test;

@@ -1,7 +1,4 @@
-package org.example.entity;
-
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
+package org.example.Enum;
 
 
 public enum Role {

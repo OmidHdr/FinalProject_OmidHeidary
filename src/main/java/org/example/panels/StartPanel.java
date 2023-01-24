@@ -1,7 +1,7 @@
 package org.example.panels;
 
 import org.example.Main;
-import org.example.entity.Role;
+import org.example.Enum.Role;
 import org.example.entity.User;
 import org.example.services.UserService;
 import org.example.services.AdminService;
