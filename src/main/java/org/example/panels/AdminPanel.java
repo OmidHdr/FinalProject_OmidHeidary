@@ -37,7 +37,8 @@ public class AdminPanel {
                 6. Add Sub Service Registration \s
                 7. Show All Service registration \s
                 8. Show All Sub Service registration \s
-                9. Logout""");
+                9. Edit Description and Base Price \s
+                10. Logout""");
         out.print("Enter Your Number : ");
     }
 
@@ -81,6 +82,11 @@ public class AdminPanel {
                 select();
                 break;
             case "9":
+                editSubservice();
+                panel();
+                select();
+                break;
+            case "10":
                 break;
             default:
 
@@ -233,6 +239,34 @@ public class AdminPanel {
         String valid = Validation.betweenShow(item, allExperts.size());
         Expert byId = expertService.findById(Long.parseLong(valid), Expert.class);
         expertService.delete(byId);
+    }
+
+    //section edit subservice
+    public static void editSubservice(){
+        //todo add this
+        SubServicesService servicesService = new SubServicesService(new SubServiceRepository());
+        final List<SubServices> allSubServices = servicesService.findAll(SubServices.class);
+        allSubServices.forEach(subServices -> {
+            out.println("_______________________________________________________________");
+            out.print("ID : " + subServices.getId() + "\t\t");
+            out.print("Name : " + subServices.getName() + "\t\t");
+            out.print("Service Name : " + subServices.getServices().getName() + "\t\t");
+            out.print("Base Price : " + subServices.getBasePrice() + "\t\t");
+            out.print("Description : " + subServices.getDescription() + "\t\t");
+        });
+        out.print("\nEnter your id to edit : ");
+        String item = Main.scanner.nextLine();
+        String valid = Validation.betweenShow(item, allSubServices.size());
+        final SubServices byId = servicesService.findById(Long.parseLong(valid), SubServices.class);
+        out.print("Enter New Description : ");
+        final String desc = Main.scanner.nextLine();
+        out.print("Enter New Base Price : ");
+        final String base = Main.scanner.nextLine();
+        final long newBasePrice = Validation.validNumber(base);
+        byId.setDescription(desc);
+        byId.setBasePrice(newBasePrice);
+        servicesService.update(byId);
+
     }
 
 }
