@@ -27,7 +27,8 @@ public class AdminPanel {
                 4. Service registration \s
                 5. Register under the service \s
                 6. Show All Service registration \s
-                7. Logout""");
+                7. Show All Sub Service registration \s
+                8. Logout""");
         out.print("Enter Your Number : ");
     }
 
@@ -50,9 +51,13 @@ public class AdminPanel {
                 select();
                 break;
             case "7":
+                showAllSubServices();
+                panel();
+                select();
                 break;
         }
     }
+
 
     private static boolean RegisterUnderService() throws Exception {
         final int size = showAllServices();
@@ -93,6 +98,28 @@ public class AdminPanel {
         select();
     }
 
+    //section show all subservices
+    private static int showAllSubServices() {
+        SubServicesService subservice = new SubServicesService(new SubServiceRepository());
+        final List<SubServices> allService = subservice.findAll(SubServices.class);
+        if (allService.size() < 1)
+            out.println("There is No Services");
+        else {
+            out.println("_________________________");
+            allService.forEach(services1 -> {
+                Long id = services1.getId();
+                ServicesService service = new ServicesService(new ServicesRepository());
+                Long serviceId = services1.getServices().getId();
+                Services byId = service.findById(serviceId, Services.class);
+                out.print("Services : " +byId.getName()+"\t\t");
+                out.println("Name : " + services1.getName());
+            });
+        }
+        return allService.size();
+
+    }
+
+    //section showall services
     public static int showAllServices() throws Exception {
         ServicesService servicesService = new ServicesService(new ServicesRepository());
         final List<Services> all = ServicesService.showAllServices();
