@@ -1,12 +1,16 @@
 package org.example.panels;
 
 import org.example.Main;
+import org.example.entity.Expert;
 import org.example.entity.Services;
 import org.example.entity.SubServices;
+import org.example.entity.User;
 import org.example.repository.ServicesRepository;
 import org.example.repository.SubServiceRepository;
+import org.example.repository.UserRepository;
 import org.example.services.ServicesService;
 import org.example.services.SubServicesService;
+import org.example.services.UserService;
 import org.example.validation.Validation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -36,8 +40,16 @@ public class AdminPanel {
     public static void select() throws Exception {
         switch (Main.scanner.nextLine()) {
             case "1":
+                confirmExpert();
+                panel();
+                select();
                 break;
             case "2":
+                break;
+            case "3":
+                showAllRequestForBeanExpert();
+                panel();
+                select();
                 break;
             case "4":
                 ServiceRegistration();
@@ -134,4 +146,36 @@ public class AdminPanel {
         }
         return all.size();
     }
+
+    //section show all request
+    public static int showAllRequestForBeanExpert() throws Exception {
+        UserService userService = new UserService(new UserRepository());
+        List<Expert> inactiveUsers = userService.findInactiveUsers();
+        inactiveUsers.forEach(subServices -> {
+            out.print("ID : " + subServices.getId()+"\t\t");
+            out.print("FirstName : " + subServices.getFirstName()+"\t\t");
+            out.print("LastName : " + subServices.getLastName()+"\t\t");
+            out.print("Email : " + subServices.getEmail()+"\t\t");
+            out.print("Role : " + subServices.getRole()+"\t\t");
+            out.print("Services : " + subServices.getServices().getName()+"\t\t");
+            out.print("Sub Services : " + subServices.getSubServices().getName()+"\t\t");
+        });
+        return inactiveUsers.size();
+    }
+
+    //section confirm Expert
+    public static void confirmExpert() throws Exception {
+        int size = showAllRequestForBeanExpert();
+        out.println();
+        out.print("Enter your Expert To active : ");
+        String item = Main.scanner.nextLine();
+        String valid = Validation.betweenShow(item, size);
+        UserService userService = new UserService(new UserRepository());
+        final User byId = userService.findById(Long.parseLong(valid), User.class);
+        byId.setStatus(true);
+        userService.update(byId);
+    }
+
+    
+
 }

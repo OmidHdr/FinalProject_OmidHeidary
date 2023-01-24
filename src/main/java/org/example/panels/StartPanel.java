@@ -8,6 +8,7 @@ import org.example.entity.SubServices;
 import org.example.entity.User;
 import org.example.repository.ServicesRepository;
 import org.example.repository.SubServiceRepository;
+import org.example.repository.UserRepository;
 import org.example.services.ServicesService;
 import org.example.services.SubServicesService;
 import org.example.services.UserService;
@@ -101,7 +102,7 @@ public class StartPanel {
             SubServices subServices = selectSubService(services.getId());
             // initialize expert
             Expert expert = new Expert(firstName, lastName, email, date, password, Role.getFromString(roleUser), false, 0L,services,subServices);
-            UserService userService = new UserService();
+            UserService userService = new UserService(new UserRepository());
             userService.create(expert);
             logger.info("Expert {} created successfully",expert.getUsername());
             panel();
@@ -109,7 +110,7 @@ public class StartPanel {
         } else {
             // initialize customer
             User user = new User(firstName, lastName, email, date, password, Role.getFromString(roleUser), true, 0L);
-            UserService userService = new UserService();
+            UserService userService = new UserService(new UserRepository());
             userService.create(user);
             logger.info("User " + user.getUsername() + " created successfully");
             panel();

@@ -8,7 +8,7 @@ import org.hibernate.query.NativeQuery;
 
 import java.util.Optional;
 
-public class AdminRepository extends RepositoryImpl<User, Integer> {
+public class AdminRepository extends RepositoryImpl<User, Long> {
 
     public static boolean login(User user) throws Exception {
         Transaction transaction = null;
@@ -29,5 +29,8 @@ public class AdminRepository extends RepositoryImpl<User, Integer> {
         return false;
     }
 
+    public static void confirmExpert(){
+
+    }
 
 }
