@@ -38,8 +38,15 @@ public class UserPanel {
                 chargeWallet(user);
                 panel();
                 select(user);
+                break;
             case "3":
-                //todo
+                showInventory(user);
+                panel();
+                select(user);
+                break;
+            case "4":
+                break;
+
         }
 
     }
@@ -66,7 +73,14 @@ public class UserPanel {
         userService.update(user);
         out.println("Inventory changed successfully ");
         logger.info("user {} charged his inventory '{}' price successfully ",user.getUsername(),newInventory);
-        
+    }
+
+    //section show inventory
+    public static void showInventory(User user){
+        UserService userService = new UserService(new UserRepository());
+        final long id = user.getId();
+        final User byId = userService.findById(id,User.class);
+        out.println("You have : "+byId.getInventory()+" Money");
     }
 
 
