@@ -82,10 +82,11 @@ public class StartPanel {
         lastName = Validation.validString(lastName);
         out.print("Enter your Email Address : ");
         String email = Main.scanner.nextLine();
-        email = Validation.validString(email);
+        email = Validation.validateEmail(email);
         LocalDate date = LocalDate.now();
         out.print("Enter Your Password : ");
         String password = Main.scanner.nextLine();
+        password = Validation.validPassword(password);
         out.println("""
                 ________________\s
                 1. customer

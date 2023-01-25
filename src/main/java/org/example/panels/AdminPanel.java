@@ -243,7 +243,6 @@ public class AdminPanel {
 
     //section edit subservice
     public static void editSubservice(){
-        //todo add this
         SubServicesService servicesService = new SubServicesService(new SubServiceRepository());
         final List<SubServices> allSubServices = servicesService.findAll(SubServices.class);
         allSubServices.forEach(subServices -> {

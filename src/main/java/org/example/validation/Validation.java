@@ -1,12 +1,43 @@
 package org.example.validation;
 
 import org.example.Main;
+
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.regex.Pattern;
 import java.util.zip.DataFormatException;
 
 public class Validation {
+
+    //section valid email
+    public static String validateEmail(String email){
+        String regex = "(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])";
+        if (email.matches(regex))
+            return email;
+        else {
+            while (!email.matches(regex))  {
+                System.out.print("Enter your Email Again : ");
+                email = Main.scanner.nextLine();
+            }
+        }
+        return email;
+    }
+
+
+    //section valid Password
+    public static String validPassword(String string) {
+        String regex = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$";
+        if (string.matches(regex))
+            return string;
+        else {
+            while (!string.matches(regex))  {
+                System.out.print("Enter your Password Again : ");
+                string = Main.scanner.nextLine();
+            }
+        }
+        return string;
+    }
+
 
     //section Number
     public static boolean noNumber(String string) {
@@ -17,11 +48,12 @@ public class Validation {
         });
         return flag.get();
     }
+
     //section cart
-    public static boolean cartNumber(String cartNumber){
+    public static boolean cartNumber(String cartNumber) {
         CartBankValidation cart = new CartBankValidation();
         boolean validation = cart.validation(cartNumber);
-        while (!validation){
+        while (!validation) {
             System.out.print("Wrong information \nTry again : ");
             validation = cart.validation(Main.scanner.nextLine());
         }
@@ -31,19 +63,22 @@ public class Validation {
     //section String
     public static String validString(String string) {
         boolean result = Validation.noNumber(string);
+        InternationalValidation international = new InternationalValidation();
+        boolean result2 = international.checkEmpty(string);
         String returnResult = string;
-        while (!result) {
+        while (!result || !result2) {
             System.out.println("Wrong Information ! ");
             System.out.print("Enter your Information : ");
             String name = Main.scanner.nextLine();
             result = Validation.noNumber(name);
+            result2 = international.checkEmpty(name);
             returnResult = name;
         }
         return returnResult;
     }
 
     //section valid number
-    public static long validNumber(String number){
+    public static long validNumber(String number) {
         InternationalValidation validateInternation = new InternationalValidation();
         boolean b = validateInternation.validNumber(number);
         String result = number;
@@ -56,21 +91,6 @@ public class Validation {
         return Long.parseLong(result);
     }
 
-
-    //section international
-    public static String validInternational(String international) {
-        InternationalValidation validateInternation = new InternationalValidation();
-        boolean binternational = validateInternation.checkMeli(international);
-        String resultInformational = international;
-        while (!binternational) {
-            System.out.println("Wrong International ! ");
-            System.out.print("Enter Your Information again : ");
-            String meli = Main.scanner.nextLine();
-            binternational = validateInternation.checkMeli(meli);
-            resultInformational = meli;
-        }
-        return resultInformational;
-    }
 
     //section year
     public static String validYear(String year) {
@@ -110,32 +130,22 @@ public class Validation {
         }
         return newNum;
     }
+
     //section between
-    public static String betweenShow(String number,int size) {
-        Pattern pattern = Pattern.compile("^[1-"+size+"]$");
+    public static String betweenShow(String number, int size) {
+        Pattern pattern = Pattern.compile("^[1-" + size + "]$");
         boolean matches = number.matches(String.valueOf(pattern));
         String newNum = number;
         while (!matches) {
-            System.out.printf("Enter Number Between '1 - %d'😀 : ",size);
+            System.out.printf("Enter Number Between '1 - %d'😀 : ", size);
             newNum = Main.scanner.nextLine();
             matches = newNum.matches(String.valueOf(pattern));
         }
         return newNum;
     }
 
-    public static String numberOne(String number) {
-        Pattern pattern = Pattern.compile("^\\d+$");
-        boolean matches = number.matches(String.valueOf(pattern));
-        String newNum = number;
-        while (!matches) {
-            System.out.print("Enter Number again : ");
-            newNum = Main.scanner.nextLine();
-            matches = newNum.matches(String.valueOf(pattern));
-        }
-        return newNum;
-    }
     //section Role
-    public static String Role(int uni){
+    public static String Role(int uni) {
         if (uni == 1)
             return "customer";
         else if (uni == 2)

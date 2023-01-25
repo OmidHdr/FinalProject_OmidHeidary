@@ -15,7 +15,7 @@ class RepositoryImplTest {
     @Test
     void create() {
         User user = new User("omid","heidary","omid@gmail.com", LocalDate.now(),"Aa123456@", Role.getFromString("customer"),true,0L);
-        UserService userService = new UserService();
+        UserService userService = new UserService(new UserRepository());
         assertDoesNotThrow((Executable) userService.create(user));
     }
 }
