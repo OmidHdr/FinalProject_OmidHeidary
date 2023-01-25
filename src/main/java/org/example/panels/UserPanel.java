@@ -35,18 +35,39 @@ public class UserPanel {
                 select(user);
                 break;
             case "2":
+                chargeWallet(user);
+                panel();
+                select(user);
+            case "3":
+                //todo
         }
 
     }
 
-    private static boolean changePassword(User user) {
+    //section change password
+    private static void changePassword(User user) {
         UserService userService = new UserService(new UserRepository());
         out.print("Enter your new password : ");
         final String newPassword = Validation.validPassword(Main.scanner.nextLine());
         user.setPassword(newPassword);
         userService.update(user);
+        out.println("password changed successfully ");
         logger.info("user {} Changed his password successfully ",user.getUsername());
-        return true;
     }
+
+    //section charge wallet
+    public static void chargeWallet(User user){
+        UserService userService = new UserService(new UserRepository());
+        out.print("Enter your Inventory you want charge it : ");
+        final String addInventory = Main.scanner.nextLine();
+        Long newInventory = Validation.validNumber(addInventory);
+        Long oldInventory = user.getInventory();
+        user.setInventory(newInventory+oldInventory);
+        userService.update(user);
+        out.println("Inventory changed successfully ");
+        logger.info("user {} charged his inventory '{}' price successfully ",user.getUsername(),newInventory);
+        
+    }
+
 
 }
