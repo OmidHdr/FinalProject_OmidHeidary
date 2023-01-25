@@ -16,7 +16,6 @@ import org.example.services.AdminService;
 import org.example.validation.Validation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import java.time.LocalDate;
 import java.util.List;
 
@@ -60,6 +59,7 @@ public class StartPanel {
                     AdminPanel.panel();
                     AdminPanel.select();
                 } else if (loginUser != null) {
+                    logger.info("User " + user.getUsername() + " Logged in successfully ");
                     UserPanel.panel();
                     UserPanel.select(loginUser);
                 } else {

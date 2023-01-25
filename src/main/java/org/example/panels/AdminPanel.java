@@ -118,6 +118,7 @@ public class AdminPanel {
         SubServices subServices = new SubServices(sub, byId,discription,price);
         final SubServicesService subServicesService = new SubServicesService(new SubServiceRepository());
         subServicesService.create(subServices);
+        logger.info("SubServices {} created successfully ",subServices.getName());
         panel();
         select();
         return true;
@@ -201,6 +202,7 @@ public class AdminPanel {
         final User byId = userService.findById(Long.parseLong(valid), User.class);
         byId.setStatus(true);
         userService.update(byId);
+        logger.info("user {} confirmed successfully ",byId.getUsername());
     }
 
     //section delete User
@@ -219,6 +221,7 @@ public class AdminPanel {
         String valid = Validation.betweenShow(item, allUsers.size());
         User byId = userService.findById(Long.parseLong(valid), User.class);
         userService.delete(byId);
+        logger.info("user {} deleted successfully ",byId.getUsername());
     }
 
     // section delete Expert
@@ -239,6 +242,7 @@ public class AdminPanel {
         String valid = Validation.betweenShow(item, allExperts.size());
         Expert byId = expertService.findById(Long.parseLong(valid), Expert.class);
         expertService.delete(byId);
+        logger.info("Expert {} deleted successfully ",byId.getUsername());
     }
 
     //section edit subservice
@@ -265,6 +269,7 @@ public class AdminPanel {
         byId.setDescription(desc);
         byId.setBasePrice(newBasePrice);
         servicesService.update(byId);
+        logger.info("subServices {} updated successfully ",byId.getName());
 
     }
 

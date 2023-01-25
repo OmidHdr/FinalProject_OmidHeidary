@@ -5,10 +5,15 @@ import org.example.entity.User;
 import org.example.repository.UserRepository;
 import org.example.services.UserService;
 import org.example.validation.Validation;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import static java.lang.System.out;
 
 public class UserPanel {
+
+    public static final Logger logger = LoggerFactory.getLogger(UserPanel.class);
+
     //section panel
     public static void panel() {
         out.println("""
@@ -40,6 +45,7 @@ public class UserPanel {
         final String newPassword = Validation.validPassword(Main.scanner.nextLine());
         user.setPassword(newPassword);
         userService.update(user);
+        logger.info("user {} Changed his password successfully ",user.getUsername());
         return true;
     }
 
