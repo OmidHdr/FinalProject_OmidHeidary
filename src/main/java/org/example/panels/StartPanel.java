@@ -53,14 +53,15 @@ public class StartPanel {
             case "1" -> {
                 final User user = createUser();
                 final boolean login = AdminService.login(user);
-                final boolean loginUser = UserService.login(user);
+                final User loginUser = UserService.login(user);
                 if (login) {
                     logger.info("User " + user.getUsername() + " Logged in successfully ");
                     System.out.println("User Logged in successfully");
                     AdminPanel.panel();
                     AdminPanel.select();
-                } else if (loginUser) {
-                    System.out.println("User exist");
+                } else if (loginUser != null) {
+                    UserPanel.panel();
+                    UserPanel.select(loginUser);
                 } else {
                     System.out.println("wrong username or password ");
                     logger.error("wrong username or password");

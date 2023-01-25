@@ -11,12 +11,14 @@ public class UserService extends ServiceImpl<UserRepository,User,Long> {
         super(userRepository);
     }
 
-    public static boolean login(User user) throws Exception {
-        if (UserRepository.login(user)){
+    public static User login(User user) throws Exception {
+        UserRepository userRepository = new UserRepository();
+        final User login = userRepository.login(user);
+        if (login != null) {
             System.out.println("User Logged in Successfully");
-            return true;
+            return login;
         }
-        return false;
+        return null;
     }
 
     //section find Inactive Users

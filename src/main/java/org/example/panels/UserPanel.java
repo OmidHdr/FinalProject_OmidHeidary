@@ -37,8 +37,9 @@ public class UserPanel {
     private static boolean changePassword(User user) {
         UserService userService = new UserService(new UserRepository());
         out.print("Enter your new password : ");
-//        Validation.
-//        userService.update(user);
+        final String newPassword = Validation.validPassword(Main.scanner.nextLine());
+        user.setPassword(newPassword);
+        userService.update(user);
         return true;
     }
 

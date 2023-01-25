@@ -11,23 +11,25 @@ import java.util.List;
 import java.util.Optional;
 
 public class UserRepository extends RepositoryImpl<User,Long> {
-    public static boolean login(User user) throws Exception {
+    
+    public static User login(User user) throws Exception {
         Transaction transaction = null;
         Session session = SingleTonConnection.getInstance().openSession();
         try {
-            transaction = session.beginTransaction();
+             transaction = session.beginTransaction();
             final NativeQuery nativeQuery = session.createNativeQuery("select * from users where username = ? and password = ?;");
             nativeQuery.setParameter(1, user.getUsername());
             nativeQuery.setParameter(2, user.getPassword());
-            final Optional first = nativeQuery.getResultList().stream().findFirst();
-            return first.isPresent();
+            nativeQuery.addEntity(User.class);
+            User result = (User) nativeQuery.getSingleResult();
+            return result;
         } catch (Exception e) {
             e.printStackTrace();
             transaction.rollback();
+            return null;
         } finally {
             session.close();
         }
-        return false;
     }
 
     public static List<Expert> findInactiveExperts() throws Exception {
