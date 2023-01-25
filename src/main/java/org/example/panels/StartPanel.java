@@ -70,6 +70,13 @@ public class StartPanel {
                 }
             }
             case "2" -> register();
+            case "3" -> {
+
+            }
+            default -> {
+                panel();
+                select();
+            }
         }
     }
 

@@ -89,6 +89,9 @@ public class AdminPanel {
             case "10":
                 break;
             default:
+                panel();
+                select();
+                break;
 
         }
     }

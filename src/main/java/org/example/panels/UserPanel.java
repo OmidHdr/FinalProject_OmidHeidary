@@ -1,6 +1,7 @@
 package org.example.panels;
 
 import com.github.mfathi91.time.PersianDate;
+import org.example.Enum.JobStatus;
 import org.example.Main;
 import org.example.entity.Order;
 import org.example.entity.Services;
@@ -39,7 +40,7 @@ public class UserPanel {
     }
 
     //section select
-    public static void select(User user) {
+    public static void select(User user) throws Exception {
         switch (Main.scanner.nextLine()) {
             case "1":
                 changePassword(user);
@@ -62,10 +63,13 @@ public class UserPanel {
                 select(user);
                 break;
             case "5":
+                StartPanel.panel();
+                StartPanel.select();
+                break;
+            default:
                 panel();
                 select(user);
                 break;
-            default:
 
         }
 
@@ -96,6 +100,7 @@ public class UserPanel {
         final String addresss = Main.scanner.nextLine();
         // initialize order
         Order order = new Order(user,desc,proposedPrice,date,addresss);
+        order.setJobStatus(JobStatus.waitingForExpert);
         final OrderService orderService = new OrderService(new OrderRepository());
         orderService.create(order);
         logger.info("user {} request a {} order ",user,order);

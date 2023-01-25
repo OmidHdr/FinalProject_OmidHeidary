@@ -1,10 +1,7 @@
 package org.example.DataBaseConnection;
 
 import lombok.NoArgsConstructor;
-import org.example.entity.Expert;
-import org.example.entity.Services;
-import org.example.entity.SubServices;
-import org.example.entity.User;
+import org.example.entity.*;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -24,6 +21,7 @@ public class SingleTonConnection {
                     .addAnnotatedClass(Services.class)
                     .addAnnotatedClass(SubServices.class)
                     .addAnnotatedClass(Expert.class)
+                    .addAnnotatedClass(Order.class)
                     .buildMetadata()
                     .buildSessionFactory();
         }
