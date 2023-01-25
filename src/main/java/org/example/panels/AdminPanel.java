@@ -161,7 +161,7 @@ public class AdminPanel {
 
 
     //section showall services
-    public static int showAllServices() throws Exception {
+    public static int showAllServices() {
         ServicesService servicesService = new ServicesService(new ServicesRepository());
         final List<Services> all = servicesService.findAll(Services.class);
         if (all.size() < 1)

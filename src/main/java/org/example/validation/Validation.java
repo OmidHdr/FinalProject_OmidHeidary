@@ -1,21 +1,61 @@
 package org.example.validation;
 
+import com.github.mfathi91.time.PersianDate;
 import org.example.Main;
 
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.regex.Pattern;
-import java.util.zip.DataFormatException;
+
+import static java.lang.System.out;
 
 public class Validation {
 
+
+    //section valid date
+    public static String validDate() {
+        while (true) {
+            PersianDate systemDate = PersianDate.now();
+            String fromSystem = String.valueOf(systemDate);
+            try {
+                String[] system = fromSystem.split("-");
+                out.print("Enter date for example " + fromSystem + " : ");
+                String dateUser = Main.scanner.nextLine();
+                String[] user = dateUser.split("-");
+                String systemYear = system[0];
+                String systemMonth = system[1];
+                String systemDay = system[2];
+                String userYear = user[0];
+                String userMonth = user[1];
+                String userDay = user[2];
+                try {
+                    if (Integer.parseInt(systemYear) == Integer.parseInt(userYear)) {
+                        if (Integer.parseInt(systemMonth) == Integer.parseInt(userMonth)) {
+                            if (Integer.parseInt(systemDay) < Integer.parseInt(userDay)) {
+                                return dateUser;
+                            }
+                        } else if (Integer.parseInt(systemMonth) < Integer.parseInt(userMonth)) {
+                            return dateUser;
+                        }
+                    } else if (Integer.parseInt(systemYear) < Integer.parseInt(userYear)) {
+                        return dateUser;
+                    }
+                } catch (Exception e) {
+                }
+                out.println("Today is " + fromSystem + " so you cant request before today !! ");
+                out.println("Try again !! ");
+            } catch (Exception e) {
+            }
+        }
+    }
+
     //section valid email
-    public static String validateEmail(String email){
+    public static String validateEmail(String email) {
         String regex = "(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])";
         if (email.matches(regex))
             return email;
         else {
-            while (!email.matches(regex))  {
+            while (!email.matches(regex)) {
                 System.out.print("Enter your Email Again : ");
                 email = Main.scanner.nextLine();
             }
@@ -30,7 +70,7 @@ public class Validation {
         if (string.matches(regex))
             return string;
         else {
-            while (!string.matches(regex))  {
+            while (!string.matches(regex)) {
                 System.out.print("Enter your Password Again : ");
                 string = Main.scanner.nextLine();
             }
@@ -105,18 +145,6 @@ public class Validation {
         return newYear;
     }
 
-    //section valid date
-    public static String validDate(String date) throws DataFormatException {
-        boolean check = DateValidation.check(date);
-        String newDate = date;
-        while (!check) {
-            System.out.print("Wrong Information !! \n" +
-                    "try Again : ");
-            newDate = Main.scanner.nextLine();
-            check = DateValidation.check(newDate);
-        }
-        return newDate;
-    }
 
     //section between
     public static String between(String number) {

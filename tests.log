@@ -3224,3 +3224,179 @@ Caused by: org.postgresql.util.PSQLException: ERROR: column "dtype" of relation 
 16:16:21.441 INFO  org.example.services.UserService - user omid@gmail.com Logged in successfully 
 16:16:21.442 INFO  org.example.panels.StartPanel - User omid@gmail.com Logged in successfully 
 16:16:29.195 INFO  org.example.panels.UserPanel - user omid@gmail.com charged his inventory '10000' price successfully 
+16:21:55.604 INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.7.Final
+16:21:55.736 WARN  org.hibernate.orm.deprecation - HHH90000012: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/hibernate-configuration. Use namespace http://www.hibernate.org/dtd/hibernate-configuration instead.  Support for obsolete DTD/XSD namespaces may be removed at any time.
+16:21:55.962 INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+16:21:56.047 WARN  o.hibernate.orm.connections.pooling - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+16:21:56.051 INFO  o.hibernate.orm.connections.pooling - HHH10001005: using driver [org.postgresql.Driver] at URL [jdbc:postgresql://localhost:5432/finalproject]
+16:21:56.051 INFO  o.hibernate.orm.connections.pooling - HHH10001001: Connection properties: {password=****, pool_size=1, user=omid}
+16:21:56.051 INFO  o.hibernate.orm.connections.pooling - HHH10001003: Autocommit mode: false
+16:21:56.053 INFO  o.h.e.j.c.i.DriverManagerConnectionProviderImpl - HHH000115: Hibernate connection pool size: 20 (min=1)
+16:21:56.142 INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+16:21:56.278 WARN  org.hibernate.cfg.AnnotationBinder - HHH000139: Illegal use of @Table in a subclass of a SINGLE_TABLE hierarchy: org.example.entity.Expert
+16:21:56.708 INFO  org.hibernate.orm.connections.access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@345d053b] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+16:21:56.776 INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+16:21:56.845 INFO  o.example.repository.AdminRepository - User omid@gmail.com Logged in successfully 
+16:21:56.868 INFO  o.example.repository.UserRepository - User omid@gmail.com Logged in successfully 
+16:21:56.871 INFO  org.example.services.UserService - user omid@gmail.com Logged in successfully 
+16:21:56.871 INFO  org.example.panels.StartPanel - User omid@gmail.com Logged in successfully 
+17:59:14.216 INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.7.Final
+17:59:14.340 WARN  org.hibernate.orm.deprecation - HHH90000012: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/hibernate-configuration. Use namespace http://www.hibernate.org/dtd/hibernate-configuration instead.  Support for obsolete DTD/XSD namespaces may be removed at any time.
+17:59:14.537 INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+17:59:14.620 WARN  o.hibernate.orm.connections.pooling - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+17:59:14.624 INFO  o.hibernate.orm.connections.pooling - HHH10001005: using driver [org.postgresql.Driver] at URL [jdbc:postgresql://localhost:5432/finalproject]
+17:59:14.624 INFO  o.hibernate.orm.connections.pooling - HHH10001001: Connection properties: {password=****, pool_size=1, user=omid}
+17:59:14.624 INFO  o.hibernate.orm.connections.pooling - HHH10001003: Autocommit mode: false
+17:59:14.626 INFO  o.h.e.j.c.i.DriverManagerConnectionProviderImpl - HHH000115: Hibernate connection pool size: 20 (min=1)
+17:59:14.711 INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+17:59:14.846 WARN  org.hibernate.cfg.AnnotationBinder - HHH000139: Illegal use of @Table in a subclass of a SINGLE_TABLE hierarchy: org.example.entity.Expert
+17:59:15.259 INFO  org.hibernate.orm.connections.access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@345d053b] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+17:59:15.318 INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+17:59:15.384 INFO  o.example.repository.AdminRepository - User omid@gmail.com Logged in successfully 
+17:59:15.399 INFO  o.example.repository.UserRepository - User omid@gmail.com Logged in successfully 
+17:59:15.401 INFO  org.example.services.UserService - user omid@gmail.com Logged in successfully 
+17:59:15.401 INFO  org.example.panels.StartPanel - User omid@gmail.com Logged in successfully 
+18:04:07.281 INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.7.Final
+18:04:07.441 WARN  org.hibernate.orm.deprecation - HHH90000012: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/hibernate-configuration. Use namespace http://www.hibernate.org/dtd/hibernate-configuration instead.  Support for obsolete DTD/XSD namespaces may be removed at any time.
+18:04:07.733 INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+18:04:07.858 WARN  o.hibernate.orm.connections.pooling - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+18:04:07.863 INFO  o.hibernate.orm.connections.pooling - HHH10001005: using driver [org.postgresql.Driver] at URL [jdbc:postgresql://localhost:5432/finalproject]
+18:04:07.863 INFO  o.hibernate.orm.connections.pooling - HHH10001001: Connection properties: {password=****, pool_size=1, user=omid}
+18:04:07.863 INFO  o.hibernate.orm.connections.pooling - HHH10001003: Autocommit mode: false
+18:04:07.866 INFO  o.h.e.j.c.i.DriverManagerConnectionProviderImpl - HHH000115: Hibernate connection pool size: 20 (min=1)
+18:04:08.025 INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+18:04:08.165 WARN  org.hibernate.cfg.AnnotationBinder - HHH000139: Illegal use of @Table in a subclass of a SINGLE_TABLE hierarchy: org.example.entity.Expert
+18:04:08.653 INFO  org.hibernate.orm.connections.access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@786ff1cb] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+18:04:08.713 INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+18:04:08.787 INFO  o.example.repository.AdminRepository - User omid@gmail.com Logged in successfully 
+18:04:08.800 INFO  o.example.repository.UserRepository - User omid@gmail.com Logged in successfully 
+18:04:08.801 INFO  org.example.services.UserService - user omid@gmail.com Logged in successfully 
+18:04:08.801 INFO  org.example.panels.StartPanel - User omid@gmail.com Logged in successfully 
+18:11:05.277 INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.7.Final
+18:11:05.412 WARN  org.hibernate.orm.deprecation - HHH90000012: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/hibernate-configuration. Use namespace http://www.hibernate.org/dtd/hibernate-configuration instead.  Support for obsolete DTD/XSD namespaces may be removed at any time.
+18:11:05.617 INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+18:11:05.745 WARN  o.hibernate.orm.connections.pooling - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+18:11:05.749 INFO  o.hibernate.orm.connections.pooling - HHH10001005: using driver [org.postgresql.Driver] at URL [jdbc:postgresql://localhost:5432/finalproject]
+18:11:05.750 INFO  o.hibernate.orm.connections.pooling - HHH10001001: Connection properties: {password=****, pool_size=1, user=omid}
+18:11:05.750 INFO  o.hibernate.orm.connections.pooling - HHH10001003: Autocommit mode: false
+18:11:05.752 INFO  o.h.e.j.c.i.DriverManagerConnectionProviderImpl - HHH000115: Hibernate connection pool size: 20 (min=1)
+18:11:05.832 INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+18:11:05.957 WARN  org.hibernate.cfg.AnnotationBinder - HHH000139: Illegal use of @Table in a subclass of a SINGLE_TABLE hierarchy: org.example.entity.Expert
+18:11:06.403 INFO  org.hibernate.orm.connections.access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@345d053b] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+18:11:06.462 INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+18:11:06.527 INFO  o.example.repository.AdminRepository - User omid Logged in successfully 
+18:11:06.541 INFO  o.example.repository.UserRepository - User omid Logged in successfully 
+18:11:06.543 INFO  org.example.services.UserService - user omid Logged in successfully 
+18:11:06.544 INFO  org.example.panels.StartPanel - User omid Logged in successfully 
+22:42:25.167 INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.7.Final
+22:42:25.328 WARN  org.hibernate.orm.deprecation - HHH90000012: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/hibernate-configuration. Use namespace http://www.hibernate.org/dtd/hibernate-configuration instead.  Support for obsolete DTD/XSD namespaces may be removed at any time.
+22:42:25.607 INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+22:42:25.852 WARN  o.hibernate.orm.connections.pooling - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+22:42:25.859 INFO  o.hibernate.orm.connections.pooling - HHH10001005: using driver [org.postgresql.Driver] at URL [jdbc:postgresql://localhost:5432/finalproject]
+22:42:25.861 INFO  o.hibernate.orm.connections.pooling - HHH10001001: Connection properties: {password=****, pool_size=1, user=omid}
+22:42:25.862 INFO  o.hibernate.orm.connections.pooling - HHH10001003: Autocommit mode: false
+22:42:25.866 INFO  o.h.e.j.c.i.DriverManagerConnectionProviderImpl - HHH000115: Hibernate connection pool size: 20 (min=1)
+22:42:25.992 INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+22:42:26.148 WARN  org.hibernate.cfg.AnnotationBinder - HHH000139: Illegal use of @Table in a subclass of a SINGLE_TABLE hierarchy: org.example.entity.Expert
+22:42:26.612 INFO  org.hibernate.orm.connections.access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@32a2a6be] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+22:42:26.682 INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+22:42:26.790 INFO  o.example.repository.AdminRepository - User omid Logged in successfully 
+22:42:26.809 INFO  o.example.repository.UserRepository - User omid Logged in successfully 
+22:42:26.811 INFO  org.example.services.UserService - user omid Logged in successfully 
+22:42:26.811 INFO  org.example.panels.StartPanel - User omid Logged in successfully 
+22:58:48.133 INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.7.Final
+22:58:48.302 WARN  org.hibernate.orm.deprecation - HHH90000012: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/hibernate-configuration. Use namespace http://www.hibernate.org/dtd/hibernate-configuration instead.  Support for obsolete DTD/XSD namespaces may be removed at any time.
+22:58:48.571 INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+22:58:48.712 WARN  o.hibernate.orm.connections.pooling - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+22:58:48.717 INFO  o.hibernate.orm.connections.pooling - HHH10001005: using driver [org.postgresql.Driver] at URL [jdbc:postgresql://localhost:5432/finalproject]
+22:58:48.717 INFO  o.hibernate.orm.connections.pooling - HHH10001001: Connection properties: {password=****, pool_size=1, user=omid}
+22:58:48.717 INFO  o.hibernate.orm.connections.pooling - HHH10001003: Autocommit mode: false
+22:58:48.720 INFO  o.h.e.j.c.i.DriverManagerConnectionProviderImpl - HHH000115: Hibernate connection pool size: 20 (min=1)
+22:58:48.836 INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+22:58:48.983 WARN  org.hibernate.cfg.AnnotationBinder - HHH000139: Illegal use of @Table in a subclass of a SINGLE_TABLE hierarchy: org.example.entity.Expert
+22:58:49.446 INFO  org.hibernate.orm.connections.access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@35c4e864] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+22:58:49.504 INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+22:58:49.594 INFO  o.example.repository.AdminRepository - User omid Logged in successfully 
+22:58:49.611 INFO  o.example.repository.UserRepository - User omid Logged in successfully 
+22:58:49.612 INFO  org.example.services.UserService - user omid Logged in successfully 
+22:58:49.613 INFO  org.example.panels.StartPanel - User omid Logged in successfully 
+22:59:27.576 INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.7.Final
+22:59:27.775 WARN  org.hibernate.orm.deprecation - HHH90000012: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/hibernate-configuration. Use namespace http://www.hibernate.org/dtd/hibernate-configuration instead.  Support for obsolete DTD/XSD namespaces may be removed at any time.
+22:59:28.070 INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+22:59:28.212 WARN  o.hibernate.orm.connections.pooling - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+22:59:28.217 INFO  o.hibernate.orm.connections.pooling - HHH10001005: using driver [org.postgresql.Driver] at URL [jdbc:postgresql://localhost:5432/finalproject]
+22:59:28.217 INFO  o.hibernate.orm.connections.pooling - HHH10001001: Connection properties: {password=****, pool_size=1, user=omid}
+22:59:28.217 INFO  o.hibernate.orm.connections.pooling - HHH10001003: Autocommit mode: false
+22:59:28.220 INFO  o.h.e.j.c.i.DriverManagerConnectionProviderImpl - HHH000115: Hibernate connection pool size: 20 (min=1)
+22:59:28.392 INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+22:59:28.609 WARN  org.hibernate.cfg.AnnotationBinder - HHH000139: Illegal use of @Table in a subclass of a SINGLE_TABLE hierarchy: org.example.entity.Expert
+22:59:29.251 INFO  org.hibernate.orm.connections.access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@35c4e864] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+22:59:29.323 INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+22:59:29.425 INFO  o.example.repository.AdminRepository - User omid Logged in successfully 
+22:59:29.443 INFO  o.example.repository.UserRepository - User omid Logged in successfully 
+22:59:29.445 INFO  org.example.services.UserService - user omid Logged in successfully 
+22:59:29.445 INFO  org.example.panels.StartPanel - User omid Logged in successfully 
+23:01:04.000 INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.7.Final
+23:01:04.134 WARN  org.hibernate.orm.deprecation - HHH90000012: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/hibernate-configuration. Use namespace http://www.hibernate.org/dtd/hibernate-configuration instead.  Support for obsolete DTD/XSD namespaces may be removed at any time.
+23:01:04.378 INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+23:01:04.492 WARN  o.hibernate.orm.connections.pooling - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+23:01:04.496 INFO  o.hibernate.orm.connections.pooling - HHH10001005: using driver [org.postgresql.Driver] at URL [jdbc:postgresql://localhost:5432/finalproject]
+23:01:04.496 INFO  o.hibernate.orm.connections.pooling - HHH10001001: Connection properties: {password=****, pool_size=1, user=omid}
+23:01:04.496 INFO  o.hibernate.orm.connections.pooling - HHH10001003: Autocommit mode: false
+23:01:04.498 INFO  o.h.e.j.c.i.DriverManagerConnectionProviderImpl - HHH000115: Hibernate connection pool size: 20 (min=1)
+23:01:04.578 INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+23:01:04.694 WARN  org.hibernate.cfg.AnnotationBinder - HHH000139: Illegal use of @Table in a subclass of a SINGLE_TABLE hierarchy: org.example.entity.Expert
+23:01:05.107 INFO  org.hibernate.orm.connections.access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@939ff41] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+23:01:05.155 INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+23:01:05.216 INFO  o.example.repository.AdminRepository - User omid Logged in successfully 
+23:01:05.234 INFO  o.example.repository.UserRepository - User omid Logged in successfully 
+23:01:05.235 INFO  org.example.services.UserService - user omid Logged in successfully 
+23:01:05.236 INFO  org.example.panels.StartPanel - User omid Logged in successfully 
+23:03:40.788 INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.7.Final
+23:03:41.002 WARN  org.hibernate.orm.deprecation - HHH90000012: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/hibernate-configuration. Use namespace http://www.hibernate.org/dtd/hibernate-configuration instead.  Support for obsolete DTD/XSD namespaces may be removed at any time.
+23:03:41.298 INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+23:03:41.424 WARN  o.hibernate.orm.connections.pooling - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+23:03:41.429 INFO  o.hibernate.orm.connections.pooling - HHH10001005: using driver [org.postgresql.Driver] at URL [jdbc:postgresql://localhost:5432/finalproject]
+23:03:41.429 INFO  o.hibernate.orm.connections.pooling - HHH10001001: Connection properties: {password=****, pool_size=1, user=omid}
+23:03:41.429 INFO  o.hibernate.orm.connections.pooling - HHH10001003: Autocommit mode: false
+23:03:41.432 INFO  o.h.e.j.c.i.DriverManagerConnectionProviderImpl - HHH000115: Hibernate connection pool size: 20 (min=1)
+23:03:41.528 INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+23:03:41.674 WARN  org.hibernate.cfg.AnnotationBinder - HHH000139: Illegal use of @Table in a subclass of a SINGLE_TABLE hierarchy: org.example.entity.Expert
+23:03:42.177 INFO  org.hibernate.orm.connections.access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@518ddd3b] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+23:03:42.245 INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+23:03:42.329 INFO  o.example.repository.AdminRepository - User omid Logged in successfully 
+23:03:42.351 INFO  o.example.repository.UserRepository - User omid Logged in successfully 
+23:03:42.353 INFO  org.example.services.UserService - user omid Logged in successfully 
+23:03:42.353 INFO  org.example.panels.StartPanel - User omid Logged in successfully 
+23:05:36.490 INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.7.Final
+23:05:36.651 WARN  org.hibernate.orm.deprecation - HHH90000012: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/hibernate-configuration. Use namespace http://www.hibernate.org/dtd/hibernate-configuration instead.  Support for obsolete DTD/XSD namespaces may be removed at any time.
+23:05:36.924 INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+23:05:37.066 WARN  o.hibernate.orm.connections.pooling - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+23:05:37.072 INFO  o.hibernate.orm.connections.pooling - HHH10001005: using driver [org.postgresql.Driver] at URL [jdbc:postgresql://localhost:5432/finalproject]
+23:05:37.073 INFO  o.hibernate.orm.connections.pooling - HHH10001001: Connection properties: {password=****, pool_size=1, user=omid}
+23:05:37.073 INFO  o.hibernate.orm.connections.pooling - HHH10001003: Autocommit mode: false
+23:05:37.076 INFO  o.h.e.j.c.i.DriverManagerConnectionProviderImpl - HHH000115: Hibernate connection pool size: 20 (min=1)
+23:05:37.184 INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+23:05:37.320 WARN  org.hibernate.cfg.AnnotationBinder - HHH000139: Illegal use of @Table in a subclass of a SINGLE_TABLE hierarchy: org.example.entity.Expert
+23:05:38.046 INFO  org.hibernate.orm.connections.access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@3d0cac1f] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+23:05:38.161 INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+23:05:38.256 INFO  o.example.repository.AdminRepository - User omid Logged in successfully 
+23:05:38.282 INFO  o.example.repository.UserRepository - User omid Logged in successfully 
+23:05:38.284 INFO  org.example.services.UserService - user omid Logged in successfully 
+23:05:38.285 INFO  org.example.panels.StartPanel - User omid Logged in successfully 
+23:07:43.141 INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.7.Final
+23:07:43.279 WARN  org.hibernate.orm.deprecation - HHH90000012: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/hibernate-configuration. Use namespace http://www.hibernate.org/dtd/hibernate-configuration instead.  Support for obsolete DTD/XSD namespaces may be removed at any time.
+23:07:43.482 INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+23:07:43.563 WARN  o.hibernate.orm.connections.pooling - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+23:07:43.566 INFO  o.hibernate.orm.connections.pooling - HHH10001005: using driver [org.postgresql.Driver] at URL [jdbc:postgresql://localhost:5432/finalproject]
+23:07:43.566 INFO  o.hibernate.orm.connections.pooling - HHH10001001: Connection properties: {password=****, pool_size=1, user=omid}
+23:07:43.567 INFO  o.hibernate.orm.connections.pooling - HHH10001003: Autocommit mode: false
+23:07:43.569 INFO  o.h.e.j.c.i.DriverManagerConnectionProviderImpl - HHH000115: Hibernate connection pool size: 20 (min=1)
+23:07:43.645 INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+23:07:43.769 WARN  org.hibernate.cfg.AnnotationBinder - HHH000139: Illegal use of @Table in a subclass of a SINGLE_TABLE hierarchy: org.example.entity.Expert
+23:07:44.200 INFO  org.hibernate.orm.connections.access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@518ddd3b] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+23:07:44.258 INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+23:07:44.331 INFO  o.example.repository.AdminRepository - User omid Logged in successfully 
+23:07:44.348 INFO  o.example.repository.UserRepository - User omid Logged in successfully 
+23:07:44.349 INFO  org.example.services.UserService - user omid Logged in successfully 
+23:07:44.350 INFO  org.example.panels.StartPanel - User omid Logged in successfully 

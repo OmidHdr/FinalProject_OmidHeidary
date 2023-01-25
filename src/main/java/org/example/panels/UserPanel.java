@@ -1,12 +1,24 @@
 package org.example.panels;
 
+import com.github.mfathi91.time.PersianDate;
 import org.example.Main;
+import org.example.entity.Order;
+import org.example.entity.Services;
+import org.example.entity.SubServices;
 import org.example.entity.User;
+import org.example.repository.OrderRepository;
+import org.example.repository.ServicesRepository;
+import org.example.repository.SubServiceRepository;
 import org.example.repository.UserRepository;
+import org.example.services.OrderService;
+import org.example.services.ServicesService;
+import org.example.services.SubServicesService;
 import org.example.services.UserService;
 import org.example.validation.Validation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.List;
 
 import static java.lang.System.out;
 
@@ -21,8 +33,8 @@ public class UserPanel {
                 1. Change Password \s
                 2. Putting money in the wallet \s
                 3. Show Inventory \s
-                7. Need an expert \s
-                9. Logout""");
+                4. Need an expert \s
+                5. Logout""");
         out.print("Enter Your Number : ");
     }
 
@@ -45,11 +57,51 @@ public class UserPanel {
                 select(user);
                 break;
             case "4":
+                needAnExpert(user);
+                panel();
+                select(user);
                 break;
+            case "5":
+                panel();
+                select(user);
+                break;
+            default:
 
         }
 
     }
+
+    private static boolean needAnExpert(User user) {
+        final int size = AdminPanel.showAllServices();
+        if (size < 1) {
+            out.println("There is no Service Registrtion in list\n" +
+                    "First Add it and come back later !!! ");
+            return false;
+        }
+        out.print("Enter your Number : ");
+        final String n = Main.scanner.nextLine();
+        final String number = Validation.betweenShow(n, size);
+        ServicesService service = new ServicesService(new ServicesRepository());
+        final Services services = service.findById(Long.parseLong(number), Services.class);
+        final SubServices subServices = StartPanel.selectSubService(services.getId());
+        out.print("Enter Description of job : ");
+        String desc = Main.scanner.nextLine();
+        desc = Validation.validString(desc);
+        out.print("Enter your proposed price : ");
+        String price = Main.scanner.nextLine();
+        final long proposedPrice = Validation.validNumber(price);
+        // taking date from user
+        final String date = Validation.validDate();
+        out.print("Enter your address : ");
+        final String addresss = Main.scanner.nextLine();
+        // initialize order
+        Order order = new Order(user,desc,proposedPrice,date,addresss);
+        final OrderService orderService = new OrderService(new OrderRepository());
+        orderService.create(order);
+        logger.info("user {} request a {} order ",user,order);
+        return true;
+    }
+
 
     //section change password
     private static void changePassword(User user) {

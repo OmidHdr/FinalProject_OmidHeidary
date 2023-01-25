@@ -2,6 +2,7 @@ package org.example.entity;
 
 import lombok.*;
 import lombok.experimental.FieldDefaults;
+import org.example.Enum.JobStatus;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -18,16 +19,29 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     Long id;
+
+    @ManyToOne
+    User user;
+
     String description;
+
     @Column(name = "proposed_price")
     Long proposedPrice;
-    @Column(name = "start_date")
-    Date startDate;
-    String address;
-    //todo add status or somting like this
-//    boolean status;
 
-    public Order(String description, Long proposedPrice, Date startDate, String address) {
+    @Column(name = "start_date")
+    String startDate;
+    String address;
+
+    @Enumerated(value = EnumType.STRING)
+    @Column(nullable = false)
+    JobStatus jobStatus;
+
+    String offer;
+
+    String opinion;
+
+    public Order(User user, String description, Long proposedPrice, String startDate, String address) {
+        this.user = user;
         this.description = description;
         this.proposedPrice = proposedPrice;
         this.startDate = startDate;
