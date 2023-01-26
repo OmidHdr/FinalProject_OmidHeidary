@@ -114,7 +114,6 @@ public class StartPanel {
         final String roleUser = Validation.Role(Integer.parseInt(role));
 
         if (role.equals("2")) {
-
             Services services = selectService();
             SubServices subServices = selectSubService(services.getId());
             // initialize expert

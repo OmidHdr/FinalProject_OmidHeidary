@@ -1,7 +1,6 @@
 package org.example.validation;
 
 import java.util.Random;
-
 import static org.hibernate.query.criteria.internal.ValueHandlerFactory.isNumeric;
 
 public class GeneratePassword {

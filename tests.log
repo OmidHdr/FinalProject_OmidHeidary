@@ -4307,3 +4307,19 @@ Caused by: org.postgresql.util.PSQLException: ERROR: column "dtype" of relation 
 20:22:49.221 INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
 20:22:49.300 INFO  o.example.repository.AdminRepository - User lsh Logged in successfully 
 20:22:56.226 INFO  o.example.repository.AdminRepository - User kshf Logged in successfully 
+20:35:07.767 INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.7.Final
+20:35:07.941 WARN  org.hibernate.orm.deprecation - HHH90000012: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/hibernate-configuration. Use namespace http://www.hibernate.org/dtd/hibernate-configuration instead.  Support for obsolete DTD/XSD namespaces may be removed at any time.
+20:35:08.212 INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+20:35:08.333 WARN  o.hibernate.orm.connections.pooling - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+20:35:08.337 INFO  o.hibernate.orm.connections.pooling - HHH10001005: using driver [org.postgresql.Driver] at URL [jdbc:postgresql://localhost:5432/finalproject]
+20:35:08.337 INFO  o.hibernate.orm.connections.pooling - HHH10001001: Connection properties: {password=****, pool_size=1, user=omid}
+20:35:08.337 INFO  o.hibernate.orm.connections.pooling - HHH10001003: Autocommit mode: false
+20:35:08.340 INFO  o.h.e.j.c.i.DriverManagerConnectionProviderImpl - HHH000115: Hibernate connection pool size: 20 (min=1)
+20:35:08.439 INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+20:35:08.602 WARN  org.hibernate.cfg.AnnotationBinder - HHH000139: Illegal use of @Table in a subclass of a SINGLE_TABLE hierarchy: org.example.entity.Expert
+20:35:09.120 INFO  org.hibernate.orm.connections.access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@17e9bc9e] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+20:35:09.200 INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+20:35:09.269 INFO  o.example.repository.AdminRepository - User omid Logged in successfully 
+20:35:09.282 INFO  o.example.repository.UserRepository - User omid Logged in successfully 
+20:35:09.283 INFO  org.example.services.UserService - user omid Logged in successfully 
+20:35:09.283 INFO  org.example.panels.StartPanel - User omid Logged in successfully 

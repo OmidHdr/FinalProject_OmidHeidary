@@ -28,64 +28,58 @@ public class ExpertPanel {
                 2. Taking money in the My bank account \s
                 3. Show Inventory \s
                 4. Take a job \s
-                5. Request for new job \s
-                6. Logout""");
+                5. Logout""");
         out.print("Enter Your Number : ");
     }
 
 
     //section select
-    public static void select(User user) {
+    public static void select(User user) throws Exception {
         ExpertService expertService = new ExpertService(new ExpertRepository());
         final Expert expert = expertService.findById(user.getId(), Expert.class);
         switch (Main.scanner.nextLine()) {
-            case "1":
+            case "1" -> {
                 changePassword(expert);
                 panel();
                 select(expert);
-                break;
-            case "2":
+            }
+            case "2" -> {
                 takeMoney(expert);
                 panel();
                 select(expert);
-                break;
-            case "3":
+            }
+            case "3" -> {
                 showInventory(expert);
                 panel();
                 select(expert);
-                break;
-            case "4":
+            }
+            case "4" -> {
                 takeJob(expert);
                 panel();
                 select(expert);
-                break;
-            case "5":
-                //todo
-                out.println("5");
+            }
+            case "5" -> {
+                StartPanel.panel();
+                StartPanel.select();
+            }
+            default -> {
                 panel();
                 select(expert);
-                break;
-            case "6":
-                break;
-            default:
-                panel();
-                select(expert);
-
-
+            }
         }
     }
 
     //section take a job
-    public static boolean takeJob(Expert expert){
+    public static void takeJob(Expert expert) throws Exception {
         ExpertService expertService = new ExpertService(new ExpertRepository());
         OrderService orderService = new OrderService(new OrderRepository());
-        final List<Order> orders = expertService.allJobs(expert);
+        final List<Order> orders = ExpertService.allJobs(expert);
         if (orders.size() < 1) {
             out.println("There is no Job for you\n" +
                     "Try again later !!! ");
             panel();
             select(expert);
-            return false;
+            return;
         }
         orders.forEach(order -> {
             int i = 1 ;
@@ -113,7 +107,6 @@ public class ExpertPanel {
         logger.info("order {} request accepted ",byId.getId());
         expertService.update(expert);
         logger.info("Expert {} updated inventory successfully",expert.getUsername());
-        return true;
     }
 
     //section take money
