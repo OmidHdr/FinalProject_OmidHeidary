@@ -12,7 +12,9 @@ import org.slf4j.LoggerFactory;
 import java.util.List;
 
 public class UserRepository extends RepositoryImpl<User,Long> {
+
    public static final Logger logger = LoggerFactory.getLogger(UserRepository.class);
+
     public static User login(User user) throws Exception {
         Transaction transaction = null;
         Session session = SingleTonConnection.getInstance().openSession();
@@ -22,9 +24,13 @@ public class UserRepository extends RepositoryImpl<User,Long> {
             nativeQuery.setParameter(1, user.getUsername());
             nativeQuery.setParameter(2, user.getPassword());
             nativeQuery.addEntity(User.class);
-            User result = (User) nativeQuery.getSingleResult();
-            logger.info("User " + user.getUsername() + " Logged in successfully ");
-            return result;
+            try{
+                User result = (User) nativeQuery.getSingleResult();
+                logger.info("User " + user.getUsername() + " Logged in successfully ");
+                return result;
+               }catch(Exception e){
+                return null;
+            }
         } catch (Exception e) {
             e.printStackTrace();
             transaction.rollback();

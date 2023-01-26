@@ -9,10 +9,7 @@ import org.example.entity.User;
 import org.example.repository.ServicesRepository;
 import org.example.repository.SubServiceRepository;
 import org.example.repository.UserRepository;
-import org.example.services.ServicesService;
-import org.example.services.SubServicesService;
-import org.example.services.UserService;
-import org.example.services.AdminService;
+import org.example.services.*;
 import org.example.validation.Validation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -53,15 +50,26 @@ public class StartPanel {
                 final User user = createUser();
                 final boolean login = AdminService.login(user);
                 final User loginUser = UserService.login(user);
+                if (loginUser == null){
+                    out.println("Wrong username or password !! ");
+                    panel();
+                    select();
+                    break;
+                }
+                final Role role = loginUser.getRole();
                 if (login) {
                     logger.info("User " + user.getUsername() + " Logged in successfully ");
                     System.out.println("User Logged in successfully");
                     AdminPanel.panel();
                     AdminPanel.select();
-                } else if (loginUser != null) {
+                } else if (loginUser != null && role.name().equals("customer") ) {
                     logger.info("User " + user.getUsername() + " Logged in successfully ");
                     UserPanel.panel();
                     UserPanel.select(loginUser);
+                } else if (loginUser != null && role.name().equals("expert")) {
+                    logger.info("Expert " + user.getUsername() + " Logged in successfully ");
+                    ExpertPanel.panel();
+                    ExpertPanel.select(loginUser);
                 } else {
                     System.out.println("wrong username or password ");
                     logger.error("wrong username or password");
@@ -139,6 +147,7 @@ public class StartPanel {
         return byId;
     }
 
+    //section select SubService
     public static SubServices selectSubService(Long id) {
         SubServicesService subServices = new SubServicesService(new SubServiceRepository());
         List<SubServices> show = subServices.selectSubService(id);

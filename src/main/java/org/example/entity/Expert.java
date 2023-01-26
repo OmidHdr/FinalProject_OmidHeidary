@@ -24,7 +24,6 @@ public class Expert extends User {
         this.services = services;
         this.subServices = subServices;
     }
-
     @ManyToOne
     Services services;
 

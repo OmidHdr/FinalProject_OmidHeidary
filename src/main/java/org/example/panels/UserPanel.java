@@ -1,6 +1,5 @@
 package org.example.panels;
 
-import com.github.mfathi91.time.PersianDate;
 import org.example.Enum.JobStatus;
 import org.example.Main;
 import org.example.entity.Order;
@@ -9,18 +8,13 @@ import org.example.entity.SubServices;
 import org.example.entity.User;
 import org.example.repository.OrderRepository;
 import org.example.repository.ServicesRepository;
-import org.example.repository.SubServiceRepository;
 import org.example.repository.UserRepository;
 import org.example.services.OrderService;
 import org.example.services.ServicesService;
-import org.example.services.SubServicesService;
 import org.example.services.UserService;
 import org.example.validation.Validation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.util.List;
-
 import static java.lang.System.out;
 
 public class UserPanel {
@@ -99,8 +93,7 @@ public class UserPanel {
         out.print("Enter your address : ");
         final String addresss = Main.scanner.nextLine();
         // initialize order
-        Order order = new Order(user,desc,proposedPrice,date,addresss);
-        order.setJobStatus(JobStatus.waitingForExpert);
+        Order order = new Order(user,desc,proposedPrice,date,addresss,JobStatus.waitingForExpert,services,subServices);
         final OrderService orderService = new OrderService(new OrderRepository());
         orderService.create(order);
         logger.info("user {} request a {} order ",user,order);

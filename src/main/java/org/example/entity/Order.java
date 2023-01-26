@@ -40,11 +40,20 @@ public class Order {
 
     String opinion;
 
-    public Order(User user, String description, Long proposedPrice, String startDate, String address) {
+    @ManyToOne
+    Services services;
+
+    @ManyToOne
+    SubServices subServices;
+
+    public Order(User user, String description, Long proposedPrice, String startDate, String address, JobStatus jobStatus, Services services, SubServices subServices) {
         this.user = user;
         this.description = description;
         this.proposedPrice = proposedPrice;
         this.startDate = startDate;
         this.address = address;
+        this.jobStatus = jobStatus;
+        this.services = services;
+        this.subServices = subServices;
     }
 }
