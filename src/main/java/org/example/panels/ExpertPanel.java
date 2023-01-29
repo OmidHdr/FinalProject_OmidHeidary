@@ -25,7 +25,7 @@ public class ExpertPanel {
         out.println("""
                 __________________________________\s
                 1. Change Password \s
-                2. Taking money in the My bank account \s
+                2. Taking money in the bank account \s
                 3. Show Inventory \s
                 4. Take a job \s
                 5. Logout""");

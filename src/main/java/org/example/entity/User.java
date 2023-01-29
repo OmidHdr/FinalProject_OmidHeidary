@@ -6,7 +6,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.FieldDefaults;
 import org.example.Enum.Role;
-
 import javax.persistence.*;
 import java.time.LocalDate;
 

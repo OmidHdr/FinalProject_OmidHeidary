@@ -2,7 +2,6 @@ package org.example;
 
 
 import org.example.panels.StartPanel;
-
 import java.util.Scanner;
 
 public class Main {

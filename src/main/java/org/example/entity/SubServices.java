@@ -1,11 +1,9 @@
 package org.example.entity;
 
 
-import jdk.jfr.Name;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 import javax.persistence.*;
-import java.util.Collection;
 
 @Setter
 @Getter
@@ -18,6 +16,7 @@ public class SubServices {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
+    @Column(unique = true)
     String name;
 
     @ManyToOne(cascade = CascadeType.ALL)

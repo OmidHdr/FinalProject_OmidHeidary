@@ -8,7 +8,6 @@ import org.hibernate.Transaction;
 import org.hibernate.query.NativeQuery;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import java.util.List;
 
 public class ExpertRepository extends RepositoryImpl<Expert,Long>{

@@ -18,6 +18,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import static java.lang.System.out;
 
@@ -118,10 +119,22 @@ public class AdminPanel {
         out.print("Enter Base Price : ");
         final String basePrice = Main.scanner.nextLine();
         Long price = Validation.validNumber(basePrice);
-        SubServices subServices = new SubServices(sub, byId,discription,price);
+        SubServices subServices = new SubServices(sub, byId, discription, price);
         final SubServicesService subServicesService = new SubServicesService(new SubServiceRepository());
+        final List<SubServices> all = subServicesService.findAll(SubServices.class);
+        all.forEach(subServices1 -> {
+            if (subServices1.getName().equals(sub)){
+                out.println("SubService already exist");
+                panel();
+                try {
+                    select();
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
         subServicesService.create(subServices);
-        logger.info("SubServices {} created successfully ",subServices.getName());
+        logger.info("SubServices {} created successfully ", subServices.getName());
         panel();
         select();
         return true;
@@ -136,6 +149,19 @@ public class AdminPanel {
         String registrationName = Main.scanner.nextLine();
         Services services = new Services(registrationName);
         ServicesService servicesService = new ServicesService(new ServicesRepository());
+        final List<Services> all = servicesService.findAll(Services.class);
+        all.forEach(services1 -> {
+            String name = services1.getName();
+            if (name.equals(registrationName)) {
+                out.println("Service already exist");
+                panel();
+                try {
+                    select();
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
         servicesService.create(services);
         logger.info("services {} added into database ", services);
         panel();
@@ -151,7 +177,6 @@ public class AdminPanel {
         else {
             out.println("_________________________");
             allService.forEach(services1 -> {
-                Long id = services1.getId();
                 ServicesService service = new ServicesService(new ServicesRepository());
                 Long serviceId = services1.getServices().getId();
                 Services byId = service.findById(serviceId, Services.class);
@@ -205,7 +230,7 @@ public class AdminPanel {
         final User byId = userService.findById(Long.parseLong(valid), User.class);
         byId.setStatus(true);
         userService.update(byId);
-        logger.info("user {} confirmed successfully ",byId.getUsername());
+        logger.info("user {} confirmed successfully ", byId.getUsername());
     }
 
     //section delete User
@@ -224,11 +249,11 @@ public class AdminPanel {
         String valid = Validation.betweenShow(item, allUsers.size());
         User byId = userService.findById(Long.parseLong(valid), User.class);
         userService.delete(byId);
-        logger.info("user {} deleted successfully ",byId.getUsername());
+        logger.info("user {} deleted successfully ", byId.getUsername());
     }
 
     // section delete Expert
-    public static void deleteExpert(){
+    public static void deleteExpert() {
         ExpertService expertService = new ExpertService(new ExpertRepository());
         final List<Expert> allExperts = expertService.findAll(Expert.class);
         allExperts.forEach(expert -> {
@@ -245,11 +270,11 @@ public class AdminPanel {
         String valid = Validation.betweenShow(item, allExperts.size());
         Expert byId = expertService.findById(Long.parseLong(valid), Expert.class);
         expertService.delete(byId);
-        logger.info("Expert {} deleted successfully ",byId.getUsername());
+        logger.info("Expert {} deleted successfully ", byId.getUsername());
     }
 
     //section edit subservice
-    public static void editSubservice(){
+    public static void editSubservice() {
         SubServicesService servicesService = new SubServicesService(new SubServiceRepository());
         final List<SubServices> allSubServices = servicesService.findAll(SubServices.class);
         allSubServices.forEach(subServices -> {
@@ -272,7 +297,7 @@ public class AdminPanel {
         byId.setDescription(desc);
         byId.setBasePrice(newBasePrice);
         servicesService.update(byId);
-        logger.info("subServices {} updated successfully ",byId.getName());
+        logger.info("subServices {} updated successfully ", byId.getName());
 
     }
 

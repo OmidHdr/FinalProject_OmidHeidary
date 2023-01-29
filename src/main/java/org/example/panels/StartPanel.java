@@ -49,6 +49,12 @@ public class StartPanel {
             case "1" -> {
                 final User user = createUser();
                 final boolean login = AdminService.login(user);
+                if (login) {
+                    logger.info("User " + user.getUsername() + " Logged in successfully ");
+                    System.out.println("User Logged in successfully");
+                    AdminPanel.panel();
+                    AdminPanel.select();
+                }
                 final User loginUser = UserService.login(user);
                 if (loginUser == null){
                     out.println("Wrong username or password !! ");
@@ -57,12 +63,7 @@ public class StartPanel {
                     break;
                 }
                 final Role role = loginUser.getRole();
-                if (login) {
-                    logger.info("User " + user.getUsername() + " Logged in successfully ");
-                    System.out.println("User Logged in successfully");
-                    AdminPanel.panel();
-                    AdminPanel.select();
-                } else if (loginUser != null && role.name().equals("customer") ) {
+                if (loginUser != null && role.name().equals("customer") ) {
                     logger.info("User " + user.getUsername() + " Logged in successfully ");
                     UserPanel.panel();
                     UserPanel.select(loginUser);
